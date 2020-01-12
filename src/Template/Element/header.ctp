@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Cakephp AngularJS v 0.0.2</a>
+            <a class="navbar-brand" href="#">Program Applications</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -25,7 +25,7 @@
                         echo $this->Html->link('login', ['controller' => 'Users', 'action' => 'login']);
                     }
                     ?>
-                </li> 
+                </li>
                 <li><?=
                     $this->Html->link('Listes dynamiques avec AngularJS', [
                         'controller' => 'ProgramApplications',
@@ -33,7 +33,7 @@
                     ]);
                     ?>
                 </li>
-                <li><?= 
+                <li><?=
                     $this->Html->link('À propos', [
                         'controller' => 'Pages',
                         'action' => 'apropos'

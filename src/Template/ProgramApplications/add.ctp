@@ -1,12 +1,12 @@
 <?php
 $urlToLinkedListFilter = $this->Url->build([
     "controller" => "Faculties",
-    "action" => "getFaculties",
-    "_ext" => "json"
+    "action" => "getFaculties"
         ]);
 echo $this->Html->scriptBlock('var urlToLinkedListFilter = "' . $urlToLinkedListFilter . '";', ['block' => true]);
 echo $this->Html->script('ProgramApplications/add', ['block' => 'scriptBottom']);
 ?>
+
 <?php
 /**
  * @var \App\View\AppView $this
@@ -35,20 +35,20 @@ echo $this->Html->script('ProgramApplications/add', ['block' => 'scriptBottom'])
         echo $this->Form->control('university_id', ['options' => $universities]);
         ?>
         <div>
-            Faculties: 
+            Faculties:
             <select name="Faculty_id"
-                    id="faculty-id" 
-                    ng-model="faculty" 
+                    id="faculty-id"
+                    ng-model="faculty"
                     ng-options="faculty.name for faculty in faculties track by faculty.id"
                     >
                 <option value=''>Select</option>
             </select>
         </div>
         <div>
-            Programs: 
+            Programs:
             <select name="program_id"
-                    id="program-id" 
-                    ng-disabled="!faculty" 
+                    id="program-id"
+                    ng-disabled="!faculty"
                     ng-model="program"
                     ng-options="program.name for program in faculty.programs track by program.id"
                     >

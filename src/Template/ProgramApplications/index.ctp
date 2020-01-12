@@ -2,7 +2,6 @@
 $urlToRestApi = $this->Url->build([
 'prefix' => 'api',
 'controller' => 'ProgramApplications'], true);
-echo $urlToRestApi;
 echo $this->Html->scriptBlock('var urlToRestApi = "' . $urlToRestApi . '";', ['block' => true]);
 echo $this->Html->script('ProgramApplications/index', ['block' => 'scriptBottom']);
 ?>
@@ -29,7 +28,7 @@ echo $this->Html->script('ProgramApplications/index', ['block' => 'scriptBottom'
     <h3><?= __('Program Applications') ?></h3>
 
     <div>
-        <?php 
+        <?php
         $urlToCarsAutocompletedemoJson = $this->Url->build([
         "controller" => "ProgramApplications",
         "action" => "findProgramApplications",
@@ -86,12 +85,12 @@ echo $this->Html->script('ProgramApplications/index', ['block' => 'scriptBottom'
                         <td><input type="text" id="description" ng-model="application.description" /></td>
                     </tr>
                 </table>-->
-            <!--<br /> <br />--> 
-<!--            <a href="#" ng-click="getApplication(2)">Get Application</a> 
-                     
+            <!--<br /> <br />-->
+<!--            <a href="#" ng-click="getApplication(2)">Get Application</a>
 
-            <a ng-click="updateApplication(application.id, application.name, application.description)">Update Application</a> 
-            <a ng-click="addApplication(application.name, application.description)">Add Application</a> 
+
+            <a ng-click="updateApplication(application.id, application.name, application.description)">Update Application</a>
+            <a ng-click="addApplication(application.name, application.description)">Add Application</a>
             <a ng-click="deleteApplication(application.id)">Delete Application</a>
 
             <br /> <br />
@@ -100,7 +99,7 @@ echo $this->Html->script('ProgramApplications/index', ['block' => 'scriptBottom'
 
             <br />-->
 <!--            <br /> -->
-            <a ng-click="getAllApplications()">Get all Applications</a><br /> 
+            <a ng-click="getAllApplications()">Get all Applications</a><br />
             <br /> <br />
             <div ng-repeat="application in programApplications">
                 {{application.id}} {{application.user_id}} {{application.application_outcome_id}} {{application.application_status_id}} {{application.program_id}} {{application.university_id}} {{application.created}}
