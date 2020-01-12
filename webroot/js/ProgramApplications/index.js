@@ -66,7 +66,7 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
         $scope.getAllApplications = function () {
             ProgramApplicationsCRUDService.getAllApplications()
                     .then(function success(response) {
-                        $scope.programApplication = response.data.data;
+                        $scope.programApplications = response.data.data;
                         $scope.message = '';
                         $scope.errorMessage = '';
                     },
@@ -80,10 +80,10 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 
 app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
 
-        this.getApplication = function getApplication(applicationId) {
+        this.getApplication = function getApplication(id) {
             return $http({
                 method: 'GET',
-                url: urlToRestApi + '/' + applicationId,
+                url: urlToRestApi + '/' + id,
                 headers: { 'X-Requested-With' : 'XMLHttpRequest',
                     'Accept' : 'application/json'}
             });
@@ -119,11 +119,19 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
         }
 
         this.getAllApplications = function getAllApplications() {
+            $thing = $http({
+                method: 'GET',
+                url: urlToRestApi,
+                headers: { 'X-Requested-With' : 'XMLHttpRequest',
+                    'Accept' : 'application/json'}
+            });
+            console.log($thing);
+
             return $http({
                 method: 'GET',
                 url: urlToRestApi,
                 headers: { 'X-Requested-With' : 'XMLHttpRequest',
-                    'Accept' : 'programApplication/json'}
+                    'Accept' : 'application/json'}
             });
         }
 

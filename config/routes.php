@@ -50,7 +50,7 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::prefix('api', function ($routes) {
     $routes->extensions(['json', 'xml']);
-    $routes->resources('Applications');
+    $routes->resources('ProgramApplications');
     $routes->fallbacks('InflectedRoute');
 });
 
@@ -75,7 +75,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'programApplications', 'action' => 'index']);
+    $routes->connect('/', ['controller' => 'ProgramApplications', 'action' => 'index']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
@@ -116,3 +116,4 @@ Router::scope('/', function (RouteBuilder $routes) {
  * ```
  */
 Plugin::routes();
+

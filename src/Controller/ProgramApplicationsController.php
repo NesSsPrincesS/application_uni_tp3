@@ -65,8 +65,8 @@ class ProgramApplicationsController extends AppController {
         $applicationStatus = $this->ProgramApplications->ApplicationStatus->find('list', ['limit' => 200]);
         $universities = $this->ProgramApplications->Universities->find('list', ['limit' => 200]);
         $faculties = $this->ProgramApplications->Programs->Faculties->find('list', ['limit' => 200]);
-        
-        // Bâtir la liste des catégories  
+
+        // Bâtir la liste des catégories
         $this->loadModel('Faculties');
         // Extraire le id de la première catégorie
         $faculties = $faculties->toArray();
@@ -104,8 +104,8 @@ class ProgramApplicationsController extends AppController {
             }
             $this->Flash->error(__('The program application could not be saved. Please, try again.'));
         }
-        
-        // Bâtir la liste des catégories  
+
+        // Bâtir la liste des catégories
         $this->loadModel('Faculties');
         $faculties = $this->Faculties->find('list', ['limit' => 200]);
 
@@ -116,7 +116,7 @@ class ProgramApplicationsController extends AppController {
         $programs = $this->ProgramApplications->Programs->find('list', [
             'conditions' => ['Programs.$faculty_id' => $faculty_id],
         ]);
-        
+
         $users = $this->ProgramApplications->Users->find('list', ['limit' => 200]);
         $applicationOutcomes = $this->ProgramApplications->ApplicationOutcomes->find('list', ['limit' => 200]);
         $applicationStatus = $this->ProgramApplications->ApplicationStatus->find('list', ['limit' => 200]);
@@ -162,5 +162,5 @@ class ProgramApplicationsController extends AppController {
 
         return $programApplication->user_id === $user['id'];
     }
-    
+
 }
