@@ -25,6 +25,7 @@ class AppController extends Controller {
                 'Crud.ApiQueryLog'
             ]
         ]);
+        //TODO: delete this?
 /*        $this->loadComponent('Auth', [
             'storage' => 'Memory',
             'authenticate' => [
