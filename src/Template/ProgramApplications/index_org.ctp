@@ -1,8 +1,8 @@
 <?php
-/**
-* @var \App\View\AppView $this
-* @var \App\Model\Entity\ProgramApplication[]|\Cake\Collection\CollectionInterface $programApplications
-*/
+    /**
+     * @var \App\View\AppView $this
+     * @var \App\Model\Entity\ProgramApplication[]|\Cake\Collection\CollectionInterface $programApplications
+     */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -18,33 +18,33 @@
 </nav>
 <div class="programApplications index large-9 medium-8 columns content">
     <h3><?= __('Program Applications') ?></h3>
-    
+
     <div>
-        <?php 
-        $urlToCarsAutocompletedemoJson = $this->Url->build([
-        "controller" => "ProgramApplications",
-        "action" => "findProgramApplications",
-        "_ext" => "json"
-        ]);
-        echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToCarsAutocompletedemoJson . '";', ['block' => true]);
-        echo $this->Html->script('ProgramApplications/autocompletedemo', ['block' => 'scriptBottom']);
+        <?php
+            $urlToCarsAutocompletedemoJson = $this->Url->build([
+                "controller" => "ProgramApplications",
+                "action" => "findProgramApplications",
+                "_ext" => "json"
+            ]);
+            echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToCarsAutocompletedemoJson . '";', ['block' => true]);
+            echo $this->Html->script('ProgramApplications/autocompletedemo', ['block' => 'scriptBottom']);
         ?>
     </div>
-    
+
     <table cellpadding="0" cellspacing="0">
         <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('application_outcome_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('application_status_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('program_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('university_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
+        <tr>
+            <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('application_outcome_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('application_status_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('program_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('university_id') ?></th>
+            <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+            <th scope="col" class="actions"><?= __('Actions') ?></th>
+        </tr>
         </thead>
         <tbody>
-            <?php foreach ($programApplications as $programApplication): ?>
+        <?php foreach ($programApplications as $programApplication): ?>
             <tr>
                 <td><?= $programApplication->has('user_id') ? $this->Html->link($programApplication->user->name, ['controller' => 'Users', 'action' => 'view', $programApplication->user->id]) : '' ?></td>
                 <td><?= $programApplication->has('application_outcome_id') ? $this->Html->link($programApplication->application_outcome->outcome, ['controller' => 'ApplicationOutcomes', 'action' => 'view', $programApplication->application_outcome->id]) : '' ?></td>
@@ -58,7 +58,7 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $programApplication->id], ['confirm' => __('Are you sure you want to delete # {0}?', $programApplication->id)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <div class="paginator">
