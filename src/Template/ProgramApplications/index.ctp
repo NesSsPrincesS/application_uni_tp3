@@ -1,9 +1,10 @@
 <?php
 $urlToRestApi = $this->Url->build([
-    'prefix' => 'api',
-    'controller' => 'ProgramApplications'], true);
+'prefix' => 'api',
+'controller' => 'ProgramApplications'], true);
+echo $urlToRestApi;
 echo $this->Html->scriptBlock('var urlToRestApi = "' . $urlToRestApi . '";', ['block' => true]);
-echo $this->Html->script('Applications/index', ['block' => 'scriptBottom']);
+echo $this->Html->script('ProgramApplications/index', ['block' => 'scriptBottom']);
 ?>
 
 <?php
@@ -26,7 +27,7 @@ echo $this->Html->script('Applications/index', ['block' => 'scriptBottom']);
 </nav>
 <div class="programApplications index large-9 medium-8 columns content">
     <h3><?= __('Program Applications') ?></h3>
-    
+
     <div>
         <?php 
         $urlToCarsAutocompletedemoJson = $this->Url->build([
@@ -38,7 +39,7 @@ echo $this->Html->script('Applications/index', ['block' => 'scriptBottom']);
         echo $this->Html->script('ProgramApplications/autocompletedemo', ['block' => 'scriptBottom']);
         ?>
     </div>
-    
+
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -70,40 +71,42 @@ echo $this->Html->script('Applications/index', ['block' => 'scriptBottom']);
             <?php endforeach; ?>
         </tbody>
         <h2>angular thing</h2>
-        <div  ng-app="app" ng-controller="ApplicationCRUDCtrl">
-<!--    <table>
-        <tr>
-            <td width="100">ID:</td>
-            <td><input type="text" id="id" ng-model="application.id" /></td>
-        </tr>
-        <tr>
-            <td width="100">Name:</td>
-            <td><input type="text" id="name" ng-model="application.name" /></td>
-        </tr>
-        <tr>
-            <td width="100">Description:</td>
-            <td><input type="text" id="description" ng-model="application.description" /></td>
-        </tr>
-    </table>-->
-    <!--<br /> <br />--> 
-    <a ng-click="getApplication(application.id)">Get Application</a> 
-    <a ng-click="updateApplication(application.id, application.name, application.description)">Update Application</a> 
-    <a ng-click="addApplication(application.name, application.description)">Add Application</a> 
-    <a ng-click="deleteApplication(application.id)">Delete Application</a>
+        <div ng-app="app" ng-controller="ApplicationCRUDCtrl">
+            <!--    <table>
+                    <tr>
+                        <td width="100">ID:</td>
+                        <td><input type="text" id="id" ng-model="application.id" /></td>
+                    </tr>
+                    <tr>
+                        <td width="100">Name:</td>
+                        <td><input type="text" id="name" ng-model="application.name" /></td>
+                    </tr>
+                    <tr>
+                        <td width="100">Description:</td>
+                        <td><input type="text" id="description" ng-model="application.description" /></td>
+                    </tr>
+                </table>-->
+            <!--<br /> <br />--> 
+<!--            <a href="#" ng-click="getApplication(2)">Get Application</a> 
+                     
 
-    <br /> <br />
-    <p style="color: green">{{message}}</p>
-    <p style="color: red">{{errorMessage}}</p>
+            <a ng-click="updateApplication(application.id, application.name, application.description)">Update Application</a> 
+            <a ng-click="addApplication(application.name, application.description)">Add Application</a> 
+            <a ng-click="deleteApplication(application.id)">Delete Application</a>
 
-    <br />
-    <br /> 
-    <a ng-click="getAllApplications()">Get all Applications</a><br /> 
-    <br /> <br />
-    <div ng-repeat="application in applications">
-        {{application.id}} {{application.name}} {{application.description}}
-    </div>
-    <!-- pre ng-show='applications'>{{applications | json }}</pre-->
-</div>
+            <br /> <br />
+            <p style="color: green">{{message}}</p>
+            <p style="color: red">{{errorMessage}}</p>
+
+            <br />-->
+<!--            <br /> -->
+            <a ng-click="getAllApplications()">Get all Applications</a><br /> 
+            <br /> <br />
+            <div ng-repeat="application in programApplications">
+                {{application.id}} {{application.user_id}} {{application.application_outcome_id}} {{application.application_status_id}} {{application.program_id}} {{application.university_id}} {{application.created}}
+            </div><!--
+            <pre ng-show='applications'>applications | json</pre>-->
+        </div>
     </table>
     <div class="paginator">
         <ul class="pagination">

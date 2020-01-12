@@ -1,9 +1,9 @@
 var app = angular.module('app', []);
 
-app.controller('ApplicationsCRUDCtrl', ['$scope', 'ApplicationsCRUDService', function ($scope, ApplicationsCRUDService) {
+app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRUDService', function ($scope, ProgramApplicationsCRUDService) {
 
         $scope.updateApplication = function () {
-            ApplicationsCRUDService.updateApplication($scope.application.id, $scope.application.name, $scope.application.description)
+            ProgramApplicationsCRUDService.updateApplication($scope.programApplication.id, $scope.programApplication.user_id, $scope.application.application_outcome)
                     .then(function success(response) {
                         $scope.message = 'Application data updated!';
                         $scope.errorMessage = '';
@@ -15,11 +15,11 @@ app.controller('ApplicationsCRUDCtrl', ['$scope', 'ApplicationsCRUDService', fun
         }
 
         $scope.getApplication = function () {
-            var id = $scope.application.id;
-            ApplicationsCRUDService.getApplication($scope.application.id)
+            var id = $scope.programApplication.id;
+            ProgramApplicationsCRUDService.getApplication($scope.programApplication.id)
                     .then(function success(response) {
-                        $scope.application = response.data.data;
-                        $scope.application.id = id;
+                        $scope.programApplication = response.data.data;
+                        $scope.programApplication.id = id;
                         $scope.message = '';
                         $scope.errorMessage = '';
                     },
@@ -35,7 +35,7 @@ app.controller('ApplicationsCRUDCtrl', ['$scope', 'ApplicationsCRUDService', fun
 
         $scope.addApplication = function () {
             if ($scope.application != null && $scope.application.name) {
-                ApplicationsCRUDService.addApplication($scope.application.name, $scope.application.description)
+                ProgramApplicationsCRUDService.addApplication($scope.application.name, $scope.application.description)
                         .then(function success(response) {
                             $scope.message = 'Application added!';
                             $scope.errorMessage = '';
@@ -51,7 +51,7 @@ app.controller('ApplicationsCRUDCtrl', ['$scope', 'ApplicationsCRUDService', fun
         }
 
         $scope.deleteApplication = function () {
-            ApplicationsCRUDService.deleteApplication($scope.application.id)
+            ProgramApplicationsCRUDService.deleteApplication($scope.application.id)
                     .then(function success(response) {
                         $scope.message = 'Application deleted!';
                         $scope.application = null;
@@ -64,9 +64,9 @@ app.controller('ApplicationsCRUDCtrl', ['$scope', 'ApplicationsCRUDService', fun
         }
 
         $scope.getAllApplications = function () {
-            ApplicationsCRUDService.getAllApplications()
+            ProgramApplicationsCRUDService.getAllApplications()
                     .then(function success(response) {
-                        $scope.applications = response.data.data;
+                        $scope.programApplication = response.data.data;
                         $scope.message = '';
                         $scope.errorMessage = '';
                     },
@@ -78,7 +78,7 @@ app.controller('ApplicationsCRUDCtrl', ['$scope', 'ApplicationsCRUDService', fun
 
     }]);
 
-app.service('ApplicationsCRUDService', ['$http', function ($http) {
+app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
 
         this.getApplication = function getApplication(applicationId) {
             return $http({
@@ -123,7 +123,7 @@ app.service('ApplicationsCRUDService', ['$http', function ($http) {
                 method: 'GET',
                 url: urlToRestApi,
                 headers: { 'X-Requested-With' : 'XMLHttpRequest',
-                    'Accept' : 'application/json'}
+                    'Accept' : 'programApplication/json'}
             });
         }
 
