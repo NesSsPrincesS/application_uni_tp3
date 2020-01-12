@@ -1,0 +1,372 @@
+2019-09-12 14:05:13 Error: Fatal Error (1): Class 'IntlDateFormatter' not found in [C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Type\DateTimeType.php, line 375]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 109
+[main] - [internal], line ??
+
+
+
+2019-09-12 14:05:13 Error: [Cake\Error\FatalErrorException] Class 'IntlDateFormatter' not found in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Type\DateTimeType.php on line 375
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(109): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'IntlDate...', 'C:\\UniServerZ\\w...', 375)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2019-09-12 14:09:30 Error: [PDOException] SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Driver.php on line 92
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Driver.php(92): PDO->__construct('mysql:host=loca...', 'root', 'mysql', Array)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(106): Cake\Database\Driver->_connect('mysql:host=loca...', Array)
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(42): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(391): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(1095): Cake\Database\Connection->getSchemaCollection()
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(1049): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(1064): Bake\Shell\Task\ModelTask->listAll()
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\BakeShell.php(258): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(518): Bake\Shell\BakeShell->all()
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#14 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#15 {main}
+
+
+2019-10-23 17:23:25 Error: [Cake\Database\Exception\MissingExtensionException] Database driver Cake\Database\Driver\Sqlite cannot be used due to a missing PHP extension or unmet dependency in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php on line 179
+Exception Attributes: array (
+  'driver' => 'Cake\\Database\\Driver\\Sqlite',
+)
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(120): Cake\Database\Connection->setDriver(Object(Cake\Database\Driver\Sqlite), Array)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionRegistry.php(89): Cake\Database\Connection->__construct(Array)
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(97): Cake\Datasource\ConnectionRegistry->_create('Cake\\Database\\C...', 'default', Array)
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionManager.php(205): Cake\Core\ObjectRegistry->load('Cake\\Database\\C...', Array)
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(68): Cake\Datasource\ConnectionManager::get('default')
+#5 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Console\Command\Migrate.php(74): Migrations\Command\Migrate->bootstrap(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Migrate.php(67): Migrations\Command\Migrate->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Migrate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'migrate')
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#15 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#16 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#17 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-10-23 17:25:04 Error: [Cake\Database\Exception\MissingExtensionException] Database driver Cake\Database\Driver\Sqlite cannot be used due to a missing PHP extension or unmet dependency in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php on line 179
+Exception Attributes: array (
+  'driver' => 'Cake\\Database\\Driver\\Sqlite',
+)
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(120): Cake\Database\Connection->setDriver(Object(Cake\Database\Driver\Sqlite), Array)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionRegistry.php(89): Cake\Database\Connection->__construct(Array)
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(97): Cake\Datasource\ConnectionRegistry->_create('Cake\\Database\\C...', 'default', Array)
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionManager.php(205): Cake\Core\ObjectRegistry->load('Cake\\Database\\C...', Array)
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(101): Cake\Datasource\ConnectionManager::get('default')
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('Users')
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('Users')
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('Users')
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#12 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#13 {main}
+
+
+2019-10-23 17:33:39 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application_etudiants_uni.application_statuses' doesn't exist in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query(Object(Cake\Database\Query))
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(111): Cake\Database\Connection->execute(Object(Cake\Database\Query))
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('ApplicationStat...')
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('ApplicationStat...')
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:34:04 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application_etudiants_uni.application_statuses' doesn't exist in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query(Object(Cake\Database\Query))
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(111): Cake\Database\Connection->execute(Object(Cake\Database\Query))
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('ApplicationStat...')
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('ApplicationStat...')
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:34:53 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application_etudiants_uni.application_statuses' doesn't exist in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query(Object(Cake\Database\Query))
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(111): Cake\Database\Connection->execute(Object(Cake\Database\Query))
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('ApplicationStat...')
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('ApplicationStat...')
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:35:20 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application_etudiants_uni.application_statuses' doesn't exist in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query(Object(Cake\Database\Query))
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(111): Cake\Database\Connection->execute(Object(Cake\Database\Query))
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('ApplicationStat...')
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('ApplicationStat...')
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:41:58 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application_etudiants_uni.application_status' doesn't exist in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query(Object(Cake\Database\Query))
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(111): Cake\Database\Connection->execute(Object(Cake\Database\Query))
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('ApplicationStat...')
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('ApplicationStat...')
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:42:25 Error: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application_etudiants_uni.application_status' doesn't exist in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php on line 39
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(350): Cake\Database\Statement\MysqlStatement->execute()
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(353): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(302): Cake\Database\Connection->query(Object(Cake\Database\Query))
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(306): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(111): Cake\Database\Connection->execute(Object(Cake\Database\Query))
+#8 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(104): Migrations\Shell\Task\SeedTask->templateData()
+#9 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\Task\SeedTask.php(130): Bake\Shell\Task\SimpleBakeTask->bake('ApplicationStat...')
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\bake\src\Shell\Task\SimpleBakeTask.php(91): Migrations\Shell\Task\SeedTask->bake('ApplicationStat...')
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Bake\Shell\Task\SimpleBakeTask->main('ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(525): Cake\Console\Shell->runCommand(Array, false, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Cake\Console\Shell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Bake\Shell\BakeShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:44:31 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'field list' in C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php on line 317
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php(317): PDOStatement->execute(Array)
+#1 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\PdoAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#2 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\TimedOutputAdapter.php(127): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#3 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\TimedOutputAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#4 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(655): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#5 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(614): Phinx\Db\Table->saveData()
+#6 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(687): Phinx\Db\Table->create()
+#7 C:\UniServerZ\www\application_uni\config\Seeds\ApplicationStatusSeed.php(37): Phinx\Db\Table->save()
+#8 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager\Environment.php(158): ApplicationStatusSeed->run()
+#9 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(421): Phinx\Migration\Manager\Environment->executeSeed(Object(ApplicationStatusSeed))
+#10 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(564): Phinx\Migration\Manager->executeSeed('default', Object(ApplicationStatusSeed))
+#11 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Console\Command\SeedRun.php(115): Phinx\Migration\Manager->seed('default', 'ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\SeedRun->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Seed.php(72): Migrations\Command\Seed->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Seed->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Seed), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'seed')
+#20 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#21 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#22 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#23 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#24 {main}
+
+
+2019-10-23 17:45:17 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' in C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php on line 317
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php(317): PDOStatement->execute(Array)
+#1 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\PdoAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#2 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\TimedOutputAdapter.php(127): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#3 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\TimedOutputAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#4 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(655): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#5 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(627): Phinx\Db\Table->saveData()
+#6 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(685): Phinx\Db\Table->update()
+#7 C:\UniServerZ\www\application_uni\config\Seeds\UsersSeed.php(45): Phinx\Db\Table->save()
+#8 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager\Environment.php(158): UsersSeed->run()
+#9 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(421): Phinx\Migration\Manager\Environment->executeSeed(Object(UsersSeed))
+#10 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(564): Phinx\Migration\Manager->executeSeed('default', Object(UsersSeed))
+#11 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Console\Command\SeedRun.php(115): Phinx\Migration\Manager->seed('default', 'UsersSeed')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\SeedRun->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Seed.php(72): Migrations\Command\Seed->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Seed->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Seed), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'seed')
+#20 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#21 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#22 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#23 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#24 {main}
+
+
+2019-10-23 17:48:18 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY' in C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php on line 317
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php(317): PDOStatement->execute(Array)
+#1 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\PdoAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#2 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\TimedOutputAdapter.php(127): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#3 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(193): Phinx\Db\Adapter\TimedOutputAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#4 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(655): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#5 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(627): Phinx\Db\Table->saveData()
+#6 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(685): Phinx\Db\Table->update()
+#7 C:\UniServerZ\www\application_uni\config\Seeds\ApplicationStatusSeed.php(37): Phinx\Db\Table->save()
+#8 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager\Environment.php(158): ApplicationStatusSeed->run()
+#9 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(421): Phinx\Migration\Manager\Environment->executeSeed(Object(ApplicationStatusSeed))
+#10 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(564): Phinx\Migration\Manager->executeSeed('default', Object(ApplicationStatusSeed))
+#11 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Console\Command\SeedRun.php(115): Phinx\Migration\Manager->seed('default', 'ApplicationStat...')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\SeedRun->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Seed.php(72): Migrations\Command\Seed->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Seed->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Seed), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'seed')
+#20 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#21 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#22 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#23 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#24 {main}
+
+
+2019-10-23 17:49:16 Error: [Cake\Database\Exception\MissingExtensionException] Database driver Cake\Database\Driver\Sqlite cannot be used due to a missing PHP extension or unmet dependency in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php on line 179
+Exception Attributes: array (
+  'driver' => 'Cake\\Database\\Driver\\Sqlite',
+)
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(120): Cake\Database\Connection->setDriver(Object(Cake\Database\Driver\Sqlite), Array)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionRegistry.php(89): Cake\Database\Connection->__construct(Array)
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(97): Cake\Datasource\ConnectionRegistry->_create('Cake\\Database\\C...', 'default', Array)
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionManager.php(205): Cake\Core\ObjectRegistry->load('Cake\\Database\\C...', Array)
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(68): Cake\Datasource\ConnectionManager::get('default')
+#5 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Seed.php(70): Migrations\Command\Seed->bootstrap(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Seed->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Seed), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'seed')
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#15 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#16 {main}
+
+
+2019-10-23 17:50:26 Error: [Cake\Database\Exception\MissingExtensionException] Database driver Cake\Database\Driver\Sqlite cannot be used due to a missing PHP extension or unmet dependency in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php on line 179
+Exception Attributes: array (
+  'driver' => 'Cake\\Database\\Driver\\Sqlite',
+)
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(120): Cake\Database\Connection->setDriver(Object(Cake\Database\Driver\Sqlite), Array)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionRegistry.php(89): Cake\Database\Connection->__construct(Array)
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(97): Cake\Datasource\ConnectionRegistry->_create('Cake\\Database\\C...', 'default', Array)
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionManager.php(205): Cake\Core\ObjectRegistry->load('Cake\\Database\\C...', Array)
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(68): Cake\Datasource\ConnectionManager::get('default')
+#5 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Console\Command\Migrate.php(74): Migrations\Command\Migrate->bootstrap(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Migrate.php(67): Migrations\Command\Migrate->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Migrate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'migrate')
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#15 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#16 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#17 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
+2019-10-23 17:54:34 Error: [Cake\Database\Exception\MissingExtensionException] Database driver Cake\Database\Driver\Sqlite cannot be used due to a missing PHP extension or unmet dependency in C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php on line 179
+Exception Attributes: array (
+  'driver' => 'Cake\\Database\\Driver\\Sqlite',
+)
+Stack Trace:
+#0 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Database\Connection.php(120): Cake\Database\Connection->setDriver(Object(Cake\Database\Driver\Sqlite), Array)
+#1 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionRegistry.php(89): Cake\Database\Connection->__construct(Array)
+#2 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(97): Cake\Datasource\ConnectionRegistry->_create('Cake\\Database\\C...', 'default', Array)
+#3 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Datasource\ConnectionManager.php(205): Cake\Core\ObjectRegistry->load('Cake\\Database\\C...', Array)
+#4 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(68): Cake\Datasource\ConnectionManager::get('default')
+#5 C:\UniServerZ\www\application_uni\vendor\robmorgan\phinx\src\Phinx\Console\Command\Migrate.php(74): Migrations\Command\Migrate->bootstrap(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Command\Migrate.php(67): Migrations\Command\Migrate->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\UniServerZ\www\application_uni\vendor\symfony\console\Command\Command.php(255): Migrations\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(921): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(273): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Migrate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\UniServerZ\www\application_uni\vendor\symfony\console\Application.php(149): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(109): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'migrate')
+#14 C:\UniServerZ\www\application_uni\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(165): Cake\Console\Shell->runCommand(Array, true, Array)
+#15 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(384): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#16 C:\UniServerZ\www\application_uni\vendor\cakephp\cakephp\src\Console\CommandRunner.php(162): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#17 C:\UniServerZ\www\application_uni\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#18 {main}
+
+
