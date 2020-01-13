@@ -18,6 +18,7 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
     //get application - from the actions menu 'view'
     $scope.getApplication = function () {
         var id = $scope.programApplication.id;
+        console.log($scope);
         ProgramApplicationsCRUDService.getApplication($scope.programApplication.id)
             .then(function success(response) {
                     $scope.programApplication = response.data.data;
@@ -37,8 +38,8 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 
     //create a new application like with New Program Application
     $scope.addApplication = function () {
-        if ($scope.programApplication != null && $scope.programApplication.university_id && $scope.programApplication.program_id ) {
-            ProgramApplicationsCRUDService.addApplication($scope.programApplication.university_id, $scope.programApplication.program_id)
+        if ($scope.programApplication != null && $scope.programApplication.university_id && $scope.programApplication.program_id) {
+            ProgramApplicationsCRUDService.addApplication($scope.programApplication.id, $scope.programApplication.university_id, $scope.programApplication.program_id)
                 .then(function success(response) {
                         $scope.message = 'Application added!';
                         $scope.errorMessage = '';
@@ -88,6 +89,15 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
 
     this.getApplication = function getApplication(id) {
+        let $http = $http({
+            method: 'GET',
+            url: urlToRestApi + '/' + id,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+        console.log($http);
         return $http({
             method: 'GET',
             url: urlToRestApi + '/' + id,
@@ -142,7 +152,7 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
                 'Accept': 'application/json'
             }
         });
-        console.log($thing);
+        // console.log($thing);
 
         return $http({
             method: 'GET',
