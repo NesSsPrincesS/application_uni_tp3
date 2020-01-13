@@ -81,9 +81,9 @@
                     {{application.created}}
                 </td>
                 <td class="actions">
-                    <a ng-click="getApplication(programApplication.id)">View</a>
-                    <a ng-click="updateApplication(programApplication.id, programApplication.application_outcome_id, programApplication.application_status_id)">Edit</a>
-                    <a ng-click="deleteApplication(programApplication.id)">Delete</a>
+                    <a ng-click="getApplication(application.id)"><?= __('View') ?></a>
+                    <a ng-click="updateApplication(application.id, application.application_outcome_id, application.application_status_id)"><?= __('Edit') ?></a>
+                    <a ng-click="deleteApplication(application.id)"><?= __('Delete') ?></a>
                 </td>
             </tr>
             </tbody>

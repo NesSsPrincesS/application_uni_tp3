@@ -3,8 +3,8 @@ var app = angular.module('app', []);
 app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRUDService', function ($scope, ProgramApplicationsCRUDService) {
 
     //update application outcome with application id - from the actions menu 'update'
-    $scope.updateApplication = function () {
-        ProgramApplicationsCRUDService.updateApplication($scope.programApplication.id, $scope.programApplication.application_outcome_id, $scope.programApplication.application_status_id)
+    $scope.updateApplication = function (id, application_outcome_id, application_status_id) {
+        ProgramApplicationsCRUDService.updateApplication(id, application_outcome_id, application_status_id)
             .then(function success(response) {
                     $scope.message = 'Application data updated!';
                     $scope.errorMessage = '';
@@ -16,15 +16,14 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
     }
 
     //get application - from the actions menu 'view'
-    $scope.getApplication = function () {
-        var id = $scope.programApplication.id;
-        console.log($scope);
-        ProgramApplicationsCRUDService.getApplication($scope.programApplication.id)
+    $scope.getApplication = function (id) {
+        ProgramApplicationsCRUDService.getApplication(id)
             .then(function success(response) {
-                    $scope.programApplication = response.data.data;
-                    $scope.programApplication.id = id;
+                    $scope.application = response.data.data;
+                    $scope.application.id = id;
                     $scope.message = '';
                     $scope.errorMessage = '';
+                    console.log($scope.application);
                 },
                 function error(response) {
                     $scope.message = '';
@@ -38,8 +37,8 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 
     //create a new application like with New Program Application
     $scope.addApplication = function () {
-        if ($scope.programApplication != null && $scope.programApplication.university_id && $scope.programApplication.program_id) {
-            ProgramApplicationsCRUDService.addApplication($scope.programApplication.id, $scope.programApplication.university_id, $scope.programApplication.program_id)
+        if ($scope.application != null && $scope.application.university_id && $scope.application.program_id) {
+            ProgramApplicationsCRUDService.addApplication($scope.application.id, $scope.application.university_id, $scope.application.program_id)
                 .then(function success(response) {
                         $scope.message = 'Application added!';
                         $scope.errorMessage = '';
@@ -56,10 +55,10 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 
     //delete application from actions menu - 'delete'
     $scope.deleteApplication = function () {
-        ProgramApplicationsCRUDService.deleteApplication($scope.programApplication.id)
+        ProgramApplicationsCRUDService.deleteApplication($scope.application.id)
             .then(function success(response) {
                     $scope.message = 'Application deleted!';
-                    $scope.programApplication = null;
+                    $scope.application = null;
                     $scope.errorMessage = '';
                 },
                 function error(response) {
@@ -89,15 +88,16 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
 
     this.getApplication = function getApplication(id) {
-        let $http = $http({
-            method: 'GET',
-            url: urlToRestApi + '/' + id,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json'
-            }
-        });
-        console.log($http);
+        console.log('service: ' + id);
+        // let $http = $http({
+        //     method: 'GET',
+        //     url: urlToRestApi + '/' + id,
+        //     headers: {
+        //         'X-Requested-With': 'XMLHttpRequest',
+        //         'Accept': 'application/json'
+        //     }
+        // });
+        // console.log($http);
         return $http({
             method: 'GET',
             url: urlToRestApi + '/' + id,
