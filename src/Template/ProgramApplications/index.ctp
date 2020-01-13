@@ -72,47 +72,47 @@
         <?php endforeach; ?>
         </tbody>
         <div ng-app="app" ng-controller="ProgramApplicationsCRUDCtrl">
-            <!--            <table>-->
-            <!--                <tr>-->
-            <!--                    <td width="100">ID:</td>-->
-            <!--                    <td><input type="text" id="id" ng-model="application.id"/></td>-->
-            <!--                </tr>-->
-            <!--                <tr>-->
-            <!--                    <td width="100">Name:</td>-->
-            <!--                    <td><input type="text" id="name" ng-model="application.name"/></td>-->
-            <!--                </tr>-->
-            <!--                <tr>-->
-            <!--                    <td width="100">Description:</td>-->
-            <!--                    <td><input type="text" id="description" ng-model="application.description"/></td>-->
-            <!--                </tr>-->
-            <!--            </table>-->
-            <!--            <br/> <br/>-->
-            <!--            <a href="#" ng-click="getApplication(2)">Get Application</a>-->
-            <!---->
-            <!---->
-            <!--            <a ng-click="updateApplication(application.id, application.name, application.description)">Update-->
-            <!--                Application</a>-->
-            <!--            <a ng-click="addApplication(application.name, application.description)">Add Application</a>-->
-            <!--            <a ng-click="deleteApplication(application.id)">Delete Application</a>-->
+            <br/> <br/>
+            <a href="#" ng-click="getApplication(2)">Get Application</a>
 
-            <!--            <br/> <br/>-->
-            <!--            <p style="color: green">{{message}}</p>-->
-            <!--            <p style="color: red">{{errorMessage}}</p>-->
 
-            <!--            <br/>-->
-            <!--            <br/>-->
+            <a ng-click="updateApplication(programApplication.id, programApplication.application_outcome_id, programApplication.application_status_id)">Update
+                Application</a>
+            <a ng-click="addApplication(application.name, application.description)">Add Application</a>
+            <a ng-click="deleteApplication(application.id)">Delete Application</a>
+
+            <br/> <br/>
+            <p style="color: green">{{message}}</p>
+            <p style="color: red">{{errorMessage}}</p>
+
+            <br/>
+            <br/>
             <a ng-click="getAllApplications()">Get all Applications</a><br/>
             <br/> <br/>
-            <div ng-repeat="appl in programApplications">
-                {{appl.id}}
+            <!--            application here can't be called smth like programApplication because it's an actual variable name in index.js-->
+<!--            the parameters must be as they appear in the database -->
+<!--            need to create custom api endpoint to get the fucking names from the id fucking christ-->
+            <div ng-repeat="application in programApplications">
+                {{application.id}} {{application.user_id}} {{application.application_outcome_id}}
+                {{application.application_status_id}} {{application.program_id}} {{application.university_id}}
+                {{application.created}}
             </div>
-
-            <!--            <div ng-repeat="application in programApplications">-->
-            <!--                            {{application.id}} {{application.user_id}} {{application.application_outcome_id}}-->
-            <!--                            {{application.application_status_id}} {{application.program_id}} {{application.university_id}}-->
-            <!--                            {{application.created}}-->
-            <!--            </div>-->
-            <pre ng-show='programApplications'>yo {{programApplications}}</pre>
+            <pre ng-show='programApplications'>{{programApplications}}</pre>
+<!--            maybe need a hidden input to submit id as well?-->
+            <table>
+                <tr>
+                    <td width="100">University:</td>
+                    <td><input type="text" id="id" ng-model="programApplication.id"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Faculties:</td>
+                    <td><input type="text" id="name" ng-model="programApplication.name"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Programs:</td>
+                    <td><input type="text" id="description" ng-model="programApplication.description"/></td>
+                </tr>
+            </table>
         </div>
     </table>
     <div class="paginator">
