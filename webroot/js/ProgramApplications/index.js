@@ -119,7 +119,7 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
         }
 
         this.getAllApplications = function getAllApplications() {
-            $thing = $http({
+            let $thing = $http({
                 method: 'GET',
                 url: urlToRestApi,
                 headers: { 'X-Requested-With' : 'XMLHttpRequest',

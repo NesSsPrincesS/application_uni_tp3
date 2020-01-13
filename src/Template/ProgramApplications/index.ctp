@@ -103,32 +103,16 @@
             <!--            <br/>-->
             <a ng-click="getAllApplications()">Get all Applications</a><br/>
             <br/> <br/>
-            <div ng-repeat="application in programApplications">
-                {{application.id}} {{application.user_id}} {{application.application_outcome_id}}
-                {{application.application_status_id}} {{application.program_id}} {{application.university_id}}
-                {{application.created}}
+            <div ng-repeat="appl in programApplications">
+                {{appl.id}}
             </div>
 
-            <tr>
-                <td><?= $programApplication->has('user_id') ? $this->Html->link($programApplication->user->name, ['controller' => 'Users', 'action' => 'view', $programApplication->user->id]) : '' ?></td>
-                <td><?= $programApplication->has('application_outcome_id') ? $this->Html->link($programApplication->application_outcome->outcome, ['controller' => 'ApplicationOutcomes', 'action' => 'view', $programApplication->application_outcome->id]) : '' ?></td>
-                <td><?= $programApplication->has('application_status_id') ? $this->Html->link($programApplication->application_status->status, ['controller' => 'ApplicationStatus', 'action' => 'view', $programApplication->application_status->id]) : '' ?></td>
-                <td><?= $programApplication->has('program_id') ? $this->Html->link($programApplication->program->name, ['controller' => 'Programs', 'action' => 'view', $programApplication->program->id]) : '' ?></td>
-                <td><?= $programApplication->has('university_id') ? $this->Html->link($programApplication->university->name, ['controller' => 'Universities', 'action' => 'view', $programApplication->university->id]) : '' ?></td>
-                <td><?= h($programApplication->created) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $programApplication->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $programApplication->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $programApplication->id], ['confirm' => __('Are you sure you want to delete # {0}?', $programApplication->id)]) ?>
-                </td>
-            </tr>
-
             <!--            <div ng-repeat="application in programApplications">-->
-                            {{application.id}} {{application.user_id}} {{application.application_outcome_id}}
-                            {{application.application_status_id}} {{application.program_id}} {{application.university_id}}
-                            {{application.created}}
+            <!--                            {{application.id}} {{application.user_id}} {{application.application_outcome_id}}-->
+            <!--                            {{application.application_status_id}} {{application.program_id}} {{application.university_id}}-->
+            <!--                            {{application.created}}-->
             <!--            </div>-->
-            <!--            <pre ng-show='ProgramApplications'>yo {{ProgramApplications}}</pre>-->
+            <pre ng-show='programApplications'>yo {{programApplications}}</pre>
         </div>
     </table>
     <div class="paginator">
