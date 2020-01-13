@@ -13,6 +13,7 @@
      * @var \App\Model\Entity\ProgramApplication[]|\Cake\Collection\CollectionInterface $programApplications
      */
 ?>
+
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
@@ -25,25 +26,11 @@
         <li><?= $this->Html->link(__('New University'), ['controller' => 'Universities', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="programApplications index large-9 medium-8 columns content">
-    <h3><?= __('Program Applications') ?></h3>
-
-    <div>
-
-        <?php
-            //TODO: make sure you don't need this (error in console: file not found)
-            //            $urlToCarsAutocompletedemoJson = $this->Url->build([
-            //                "controller" => "ProgramApplications",
-            //                "action" => "findProgramApplications",
-            //                "_ext" => "json"
-            //            ]);
-            //        echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToCarsAutocompletedemoJson . '";', ['block' => true]);
-            //        echo $this->Html->script('ProgramApplications/autocompletedemo', ['block' => 'scriptBottom']);
-        ?>
-    </div>
-
-    <div ng-app="app" ng-controller="ProgramApplicationsCRUDCtrl">
-        <a ng-click="getAllApplications()">Get all Applications</a><br/>
+<div class="programApplications index large-9 medium-8 columns content" ng-app="app"
+     ng-controller="ProgramApplicationsCRUDCtrl">
+    <div class="prog-app-index" ng-init="getAllApplications()">
+        <h3><?= __('Program Applications') ?></h3>
+<!--        <a ng-click="getAllApplications()">Get all Applications</a><br/>-->
         <table cellpadding="0" cellspacing="0">
             <thead>
             <tr>
@@ -82,63 +69,74 @@
                 </td>
                 <td class="actions">
                     <a ng-click="getApplication(application.id)"><?= __('View') ?></a>
-                    <a ng-click="updateApplication(application.id, application.application_outcome_id, application.application_status_id)"><?= __('Edit') ?></a>
+                    <a ng-click="displayUpdateForm(application)"><?= __('Edit') ?></a>
                     <a ng-click="deleteApplication(application.id)"><?= __('Delete') ?></a>
                 </td>
             </tr>
             </tbody>
         </table>
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->first('<< ' . __('first')) ?>
+                <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next(__('next') . ' >') ?>
+                <?= $this->Paginator->last(__('last') . ' >>') ?>
+            </ul>
+            <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        </div>
     </div>
 
-<!--    <div ng-app="app" ng-controller="ProgramApplicationsCRUDCtrl">-->
-<!--        <a ng-click="updateApplication(programApplication.id, programApplication.application_outcome_id, programApplication.application_status_id)">Update-->
-<!--            Application</a>-->
-<!--        <a ng-click="addApplication(programApplication.id, programApplication.university_id, programApplication.program_id)">Add-->
-<!--            Application</a>-->
-<!--        <a ng-click="deleteApplication(programApplication.id)">Delete Application</a>-->
-<!---->
-<!--        <p style="color: green">{{message}}</p>-->
-<!--        <p style="color: red">{{errorMessage}}</p>-->
-<!---->
-<!--        <a ng-click="getAllApplications()">Get all Applications</a><br/>-->
-        <!--            application here can't be called smth like programApplication because it's an actual variable name in index.js-->
-        <!--            the parameters must be as they appear in the database -->
-        <!--            need to create custom api endpoint to get the fucking names from the id fucking christ-->
-<!--        <tbody>-->
-<!---->
-<!--        </tbody>-->
+    <div class="prog-app-view" style="display: none">
+        <h3>Application #{{application.id}}</h3>
+        <table class="vertical-table">
+            <tr>
+                <th scope="row"><?= __('Application number') ?></th>
+                <td>{{application.id}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('User') ?></th>
+                <td>{{application.user_id}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('Application Outcome') ?></th>
+                <td>{{application.application_outcome_id}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('Application Status') ?></th>
+                <td>{{application.application_status_id}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('Faculty') ?></th>
+                <td>faculty id</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('Program') ?></th>
+                <td>{{application.program_id}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('University') ?></th>
+                <td>{{application.university_id}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><?= __('Date Of Application') ?></th>
+                <td>{{application.created}}</td>
+            </tr>
+        </table>
+    </div>
 
-<!--        <pre ng-show='programApplications'>{{programApplications}}</pre>-->
-        <!--            maybe need a hidden input to submit id as well?-->
-<!--        <table>-->
-    <!--            <tr>-->
-    <!--                <td width="100">ID:</td>-->
-    <!--                <td><input type="text" id="id" ng-model="programApplication.id"/></td>-->
-    <!--            </tr>-->
-    <!--            <tr>-->
-    <!--                <td width="100">University:</td>-->
-    <!--                <td><input type="text" id="university-id" ng-model="programApplication.university_id"/></td>-->
-    <!--            </tr>-->
-    <!--            <tr>-->
-    <!--                <td width="100">Faculties:</td>-->
-    <!--                <td><input type="text" id="faculty-id" ng-model="programApplication.faculty_id"/></td>-->
-    <!--            </tr>-->
-    <!--            <tr>-->
-    <!--                <td width="100">Programs:</td>-->
-    <!--                <td><input type="text" id="program-id" ng-model="programApplication.program_id"/></td>-->
-    <!--            </tr>-->
-    <!---->
-    <!--        </table>-->
-    <!--    </div>-->
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    <div class="prog-app-edit" style="display: none">
+        <?= $this->Form->create() ?>
+        <fieldset>
+            <legend><?= __('Edit Program Application') ?></legend>
+            <?php
+                echo $this->Form->control('application_outcome_id', ['multiple' => false, 'empty' => false, 'required' => true]);
+//                echo $this->Form->control('application_outcome_id', ['options' => $applicationOutcomes]);
+//                echo $this->Form->control('application_status_id', ['options' => $applicationStatus]);
+            ?>
+        </fieldset>
+        <?= $this->Form->button(__('Submit'), ['ng-click' => 'updateApplication(application)']) ?>
+        <?= $this->Form->end() ?>
     </div>
 </div>
 
