@@ -1,7 +1,6 @@
 var app = angular.module('app', []);
 
 app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRUDService', function ($scope, ProgramApplicationsCRUDService) {
-
     //TODO: remove messages and unused $scope.xxx
     //fired when the page loads
     $scope.getAllApplications = function () {
@@ -15,6 +14,26 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
                     $scope.message = '';
                     $scope.errorMessage = 'Error getting applications!';
                 });
+    }
+
+    $scope.initAdd = function () {
+        ProgramApplicationsCRUDService.getFaculties()
+            .then(function success(response) {
+                $scope.faculties = response.data;
+            });
+        ProgramApplicationsCRUDService.getUniversities()
+            .then(function success(response) {
+                    console.log(response);
+                    $scope.universities = response.data;
+                },
+                function error(response) {
+                    console.log('error');
+                });
+    }
+
+    $scope.displayAddForm = function () {
+        $('.prog-app-index').hide();
+        $('.prog-app-add').show();
     }
 
     //create a new application like with New Program Application
@@ -45,7 +64,6 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
                     $scope.application.id = id;
                     $scope.message = '';
                     $scope.errorMessage = '';
-                    console.log($scope.application);
                 },
                 function error(response) {
                     $scope.message = '';
@@ -58,20 +76,36 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
     }
 
     //display the application update form
-    $scope.displayUpdateForm = function(application) {
+    $scope.displayUpdateForm = function (application) {
+        $scope.application = application;
         $('.prog-app-index').hide();
-        $('.prog-app-view').hide();
         $('.prog-app-edit').show();
+        ProgramApplicationsCRUDService.getApplicationStatuses()
+            .then(function success(response) {
+                    $scope.applicationStatuses = response.data.data;
+                    $scope.message = '';
+                    $scope.errorMessage = '';
+                },
+                function error(response) {
+                    $scope.message = '';
+                    $scope.errorMessage = 'Error getting applications!';
+                });
+        ProgramApplicationsCRUDService.getApplicationOutcomes()
+            .then(function success(response) {
+                    $scope.applicationOutcomes = response.data.data;
+                    $scope.message = '';
+                    $scope.errorMessage = '';
+                },
+                function error(response) {
+                    $scope.message = '';
+                    $scope.errorMessage = 'Error getting applications!';
+                });
+
     }
 
     //update application outcome with application id - from the actions menu 'update'
-    $scope.updateApplication = function (application) {
-        console.log('wee');
-
-        $('.prog-app-index').show();
-        $('.prog-app-view').hide();
-        $('.prog-app-edit').hide();
-        ProgramApplicationsCRUDService.updateApplication(application.id, application.application_outcome_id, application.application_status_id)
+    $scope.updateApplication = function () {
+        ProgramApplicationsCRUDService.updateApplication($scope.application, $scope.application_outcome, $scope.application_status)
             .then(function success(response) {
                     $scope.message = 'Application data updated!';
                     $scope.errorMessage = '';
@@ -89,9 +123,9 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
             ProgramApplicationsCRUDService.deleteApplication(id)
                 .then(function success(response) {
                         $scope.getAllApplications();
-                        /*   $scope.message = 'Application deleted!';
-                           $scope.application = null;
-                           $scope.errorMessage = '';*/
+                        $scope.message = 'Application deleted!';
+                        $scope.application = null;
+                        $scope.errorMessage = '';
                     },
                     function error(response) {
                         $scope.errorMessage = 'Error deleting application!';
@@ -99,10 +133,55 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
                     })
         }
     }
-
 }]);
 
 app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
+
+    this.getAllApplications = function getAllApplications() {
+        return $http({
+            method: 'GET',
+            url: urlToRestApi,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+    }
+
+    this.getFaculties = function getFaculties() {
+        return $http({
+            method: 'GET',
+            url: urlToFaculties,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+    }
+
+    this.getUniversities = function getUniversities() {
+        return $http({
+            method: 'GET',
+            url: urlToUniversities,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+    }
+
+    this.addApplication = function addApplication(university_id, program_id) {
+        return $http({
+            method: 'POST',
+            url: urlToRestApi,
+            //TODO: add user_id and created
+            data: {university_id: university_id, program_id: program_id},
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+    }
 
     this.getApplication = function getApplication(id) {
         return $http({
@@ -115,16 +194,43 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
         });
     }
 
-    this.addApplication = function addApplication(university_id, program_id) {
+    this.getApplicationStatuses = function getApplicationStatuses() {
         return $http({
-            method: 'POST',
-            url: urlToRestApi,
-            data: {university_id: university_id, program_id: program_id},
+            method: 'GET',
+            url: urlToApplicationStatuses,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Accept': 'application/json'
             }
         });
+    }
+
+    this.getApplicationOutcomes = function getApplicationOutcomes() {
+        return $http({
+            method: 'GET',
+            url: urlToApplicationOutcomes,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+    }
+
+    this.updateApplication = function updateApplication(application, application_outcome, application_status) {
+        console.log(application.id + ' ' + application_outcome + ' ' + application_status);
+
+        let $outcome_id = ((application_outcome === undefined) ? application.application_outcome_id : application_outcome.id);
+        let $status_id = ((application_status === undefined) ? application.application_status_id : application_status.id);
+
+        return $http({
+            method: 'PATCH',
+            url: urlToRestApi + '/' + application.id,
+            data: {application_outcome_id: $outcome_id, application_status_id: $status_id},
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        })
     }
 
     this.deleteApplication = function deleteApplication(id) {
@@ -136,39 +242,6 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
                 'Accept': 'application/json'
             }
         })
-    }
-
-    this.updateApplication = function updateApplication(id, application_outcome_id, application_status_id) {
-        return $http({
-            method: 'PATCH',
-            url: urlToRestApi + '/' + id,
-            data: {application_outcome_id: application_outcome_id, application_status_id: application_status_id},
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json'
-            }
-        })
-    }
-
-    this.getAllApplications = function getAllApplications() {
-        let $thing = $http({
-            method: 'GET',
-            url: urlToRestApi,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json'
-            }
-        });
-        // console.log($thing);
-
-        return $http({
-            method: 'GET',
-            url: urlToRestApi,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept': 'application/json'
-            }
-        });
     }
 
 }]);

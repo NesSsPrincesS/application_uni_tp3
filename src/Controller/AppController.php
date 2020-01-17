@@ -76,7 +76,7 @@ class AppController extends Controller {
         // Note: These defaults are just to get started quickly with development
         // and should not be used in production. You should instead set "_serialize"
         // in each action as required.
-        
+
         if (!array_key_exists('_serialize', $this->viewVars) &&
                 in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
@@ -87,11 +87,12 @@ class AppController extends Controller {
 
     public function beforeFilter(Event $event) {
         $this->Auth->allow(['index', 'view', 'display', 'getByFaculty', 'getProgramsSortedByFaculties', 'getFaculties']);
+        $this->Auth->allow(['index', 'view', 'display', 'getUniversities']);
     }
 
 
     public function isAuthorized($user) {
-        
+
         return false;
     }
 }

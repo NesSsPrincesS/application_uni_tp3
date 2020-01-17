@@ -8,6 +8,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New University'), ['action' => 'add']) ?></li>
+        <li><a ng-click="addUniversity()"><?= __('New University') ?></a></li>
         <li><?= $this->Html->link(__('List Program Applications'), ['controller' => 'ProgramApplications', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Program Application'), ['controller' => 'ProgramApplications', 'action' => 'add']) ?></li>
     </ul>
