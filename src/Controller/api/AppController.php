@@ -1,50 +1,31 @@
 <?php
 
-namespace App\Controller\Api;
+    namespace App\Controller\Api;
 
-use Cake\Controller\Controller;
+    use Cake\Controller\Controller;
 
-class AppController extends Controller {
+    class AppController extends Controller
+    {
 
-    use \Crud\Controller\ControllerTrait;
+        use \Crud\Controller\ControllerTrait;
 
-    public function initialize() {
-        parent::initialize();
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Crud.Crud', [
-            'actions' => [
-                'Crud.Index',
-                'Crud.View',
-                'Crud.Add',
-                'Crud.Edit',
-                'Crud.Delete'
-            ],
-            'listeners' => [
-                'Crud.Api',
-                'Crud.ApiPagination',
-                'Crud.ApiQueryLog'
-            ]
-        ]);
-        //TODO: delete this?
-/*        $this->loadComponent('Auth', [
-            'storage' => 'Memory',
-            'authenticate' => [
-                'Form' => [
-                    'scope' => ['Users.active' => 1]
+        public function initialize()
+        {
+            parent::initialize();
+            $this->loadComponent('RequestHandler');
+            $this->loadComponent('Crud.Crud', [
+                'actions' => [
+                    'Crud.Index',
+                    'Crud.View',
+                    'Crud.Add',
+                    'Crud.Edit',
+                    'Crud.Delete'
                 ],
-                'ADmad/JwtAuth.Jwt' => [
-                    'parameter' => 'token',
-                    'userModel' => 'Users',
-                    'scope' => ['Users.active' => 1],
-                    'fields' => [
-                        'username' => 'id'
-                    ],
-                    'queryDatasource' => true
+                'listeners' => [
+                    'Crud.Api',
+                    'Crud.ApiPagination',
+                    'Crud.ApiQueryLog'
                 ]
-            ],
-            'unauthorizedRedirect' => false,
-            'checkAuthIn' => 'Controller.initialize'
-        ]);
-*/    }
-
-}
+            ]);
+        }
+    }

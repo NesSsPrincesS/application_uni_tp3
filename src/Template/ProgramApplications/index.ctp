@@ -1,5 +1,4 @@
 <?php
-    //TODO: i removed 'json' from here because it wouldn't work on my pc, test with yours
     $urlToRestApi = $this->Url->build([
         'prefix' => 'api',
         'controller' => 'ProgramApplications'], true);

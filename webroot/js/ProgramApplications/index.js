@@ -1,19 +1,11 @@
 var app = angular.module('app', []);
 
 app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRUDService', function ($scope, ProgramApplicationsCRUDService) {
-    //TODO: remove messages and unused $scope.xxx
-    //fired when the page loads
     $scope.getAllApplications = function () {
         ProgramApplicationsCRUDService.getAllApplications()
             .then(function success(response) {
-                    $scope.programApplications = response.data.data;
-                    $scope.message = '';
-                    $scope.errorMessage = '';
-                },
-                function error(response) {
-                    $scope.message = '';
-                    $scope.errorMessage = 'Error getting applications!';
-                });
+                $scope.programApplications = response.data.data;
+            });
     }
 
     $scope.initAdd = function () {
@@ -33,98 +25,53 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
         $('.prog-app-add').show();
     }
 
-    //create a new application like with New Program Application
     $scope.addApplication = function () {
         if ($scope.university && $scope.program) {
             ProgramApplicationsCRUDService.addApplication($scope.university, $scope.program, new Date())
                 .then(function success(response) {
-                        $scope.message = 'Application added!';
-                        $scope.errorMessage = '';
-                    },
-                    function error(response) {
-                        $scope.errorMessage = 'Error adding application!';
-                        $scope.message = '';
-                    });
+                    $scope.message = 'Application added!';
+                });
         }
     }
 
-    //get application - from the actions menu 'view'
     $scope.getApplication = function (id) {
         $('.prog-app-index').hide();
         $('.prog-app-view').show();
         ProgramApplicationsCRUDService.getApplication(id)
             .then(function success(response) {
-                    $scope.application = response.data.data;
-                    $scope.application.id = id;
-                    $scope.message = '';
-                    $scope.errorMessage = '';
-                },
-                function error(response) {
-                    $scope.message = '';
-                    if (response.status === 404) {
-                        $scope.errorMessage = 'Application not found!';
-                    } else {
-                        $scope.errorMessage = "Error getting application!";
-                    }
-                });
+                $scope.application = response.data.data;
+                $scope.application.id = id;
+            });
     }
 
-    //display the application update form
     $scope.displayUpdateForm = function (application) {
         $scope.application = application;
         $('.prog-app-index').hide();
         $('.prog-app-edit').show();
         ProgramApplicationsCRUDService.getApplicationStatuses()
             .then(function success(response) {
-                    $scope.applicationStatuses = response.data.data;
-                    $scope.message = '';
-                    $scope.errorMessage = '';
-                },
-                function error(response) {
-                    $scope.message = '';
-                    $scope.errorMessage = 'Error getting applications!';
-                });
+                $scope.applicationStatuses = response.data.data;
+            });
         ProgramApplicationsCRUDService.getApplicationOutcomes()
             .then(function success(response) {
-                    $scope.applicationOutcomes = response.data.data;
-                    $scope.message = '';
-                    $scope.errorMessage = '';
-                },
-                function error(response) {
-                    $scope.message = '';
-                    $scope.errorMessage = 'Error getting applications!';
-                });
-
+                $scope.applicationOutcomes = response.data.data;
+            });
     }
 
-    //update application outcome with application id - from the actions menu 'update'
     $scope.updateApplication = function () {
         ProgramApplicationsCRUDService.updateApplication($scope.application, $scope.application_outcome, $scope.application_status)
             .then(function success(response) {
-                    $scope.message = 'Application data updated!';
-                    $scope.errorMessage = '';
-                },
-                function error(response) {
-                    $scope.errorMessage = 'Error updating application!';
-                    $scope.message = '';
-                });
+            });
     }
 
 
-    //delete application from actions menu - 'delete'
     $scope.deleteApplication = function (id) {
         if (confirm('Are you sure you want to delete this application?')) {
             ProgramApplicationsCRUDService.deleteApplication(id)
                 .then(function success(response) {
-                        $scope.getAllApplications();
-                        $scope.message = 'Application deleted!';
-                        $scope.application = null;
-                        $scope.errorMessage = '';
-                    },
-                    function error(response) {
-                        $scope.errorMessage = 'Error deleting application!';
-                        $scope.message = '';
-                    })
+                    $scope.getAllApplications();
+                    $scope.application = null;
+                })
         }
     }
 }]);
@@ -168,7 +115,6 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
         return $http({
             method: 'POST',
             url: urlToRestApi,
-            //TODO: add user_id and created
             data: {university_id: university.id, program_id: program.id},
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
