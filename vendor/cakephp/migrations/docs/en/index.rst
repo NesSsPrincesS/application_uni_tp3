@@ -193,6 +193,7 @@ Migration names can follow any of the following patterns:
   specified table
 * (``/^(Alter)(.*)/``) Alters the specified table. An alias
   for CreateTable and AddField.
+* (``/^(Alter).*(?:On)(.*)/``) Alters fields from the specified table.
 
 You can also use the ``underscore_form`` as the name for your migrations i.e.
 ``create_products``.
@@ -228,6 +229,11 @@ For instance, the following are all valid ways of specifying an email field:
 * ``email:string:unique:EMAIL_INDEX``
 * ``email:string[120]:unique:EMAIL_INDEX``
 
+While defining decimal, the ``length`` can be defined to have precision and scale, separated by a comma.
+
+* ``amount:decimal[5,2]``
+* ``amount:decimal?[5,2]``
+
 The question mark following the fieldType will make the column nullable.
 
 The ``length`` parameter for the ``fieldType`` is optional and should always be
@@ -258,6 +264,7 @@ an invalid value. Default field type is ``string``:
 
 * id: integer
 * created, modified, updated: datetime
+* latitude, longitude: decimal
 
 Creating a table
 ----------------
@@ -315,7 +322,7 @@ the code for creating the columns will be generated:
 
 .. code-block:: bash
 
-    bin/cake bake migration AddPriceToProducts price:decimal
+    bin/cake bake migration AddPriceToProducts price:decimal[5,2]
 
 Executing the command line above will generate::
 
@@ -327,8 +334,13 @@ Executing the command line above will generate::
         public function change()
         {
             $table = $this->table('products');
-            $table->addColumn('price', 'decimal')
-                  ->update();
+            $table->addColumn('price', 'decimal', [
+                'default' => null,
+                'null' => false,
+                'precision' => 5,
+                'scale' => 2,
+            ]);
+            $table->update();
         }
     }
 
@@ -393,6 +405,31 @@ If no length is specified, lengths for certain type of columns are defaulted:
 * string: 255
 * integer: 11
 * biginteger: 20
+
+Alter a column from a table
+-----------------------------------
+
+In the same way, you can generate a migration to alter a column by using the
+command line, if the migration name is of the form "AlterXXXOnYYY":
+
+.. code-block:: bash
+
+    bin/cake bake migration AlterPriceOnProducts name:float
+
+will generate::
+
+    <?php
+    use Migrations\AbstractMigration;
+
+    class AlterPriceFromProducts extends AbstractMigration
+    {
+        public function change()
+        {
+            $table = $this->table('products');
+            $table->changeColumn('name', 'float');
+            $table->update();
+        }
+    }
 
 Removing a column from a table
 ------------------------------

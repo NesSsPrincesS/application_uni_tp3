@@ -34,11 +34,10 @@ use Cake\Utility\Hash;
  *
  * @property \Cake\Controller\Component\RequestHandlerComponent $RequestHandler
  * @property \Cake\Controller\Component\FlashComponent $Flash
- * @link https://book.cakephp.org/3.0/en/controllers/components/authentication.html
+ * @link https://book.cakephp.org/3/en/controllers/components/authentication.html
  */
 class AuthComponent extends Component
 {
-
     use EventDispatcherTrait;
 
     /**
@@ -165,7 +164,7 @@ class AuthComponent extends Component
         'authError' => null,
         'unauthorizedRedirect' => true,
         'storage' => 'Session',
-        'checkAuthIn' => 'Controller.startup'
+        'checkAuthIn' => 'Controller.startup',
     ];
 
     /**
@@ -321,7 +320,8 @@ class AuthComponent extends Component
             return $result;
         }
 
-        if ($isLoginAction ||
+        if (
+            $isLoginAction ||
             empty($this->_config['authorize']) ||
             $this->isAuthorized($this->user())
         ) {
@@ -489,15 +489,15 @@ class AuthComponent extends Component
             'flash' => [
                 'element' => 'error',
                 'key' => 'flash',
-                'params' => ['class' => 'error']
+                'params' => ['class' => 'error'],
             ],
             'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login',
-                'plugin' => null
+                'plugin' => null,
             ],
             'logoutRedirect' => $this->_config['loginAction'],
-            'authError' => __d('cake', 'You are not authorized to access that location.')
+            'authError' => __d('cake', 'You are not authorized to access that location.'),
         ];
 
         $config = $this->getConfig();
@@ -618,7 +618,7 @@ class AuthComponent extends Component
      *
      * @param string|string[]|null $actions Controller action name or array of actions
      * @return void
-     * @link https://book.cakephp.org/3.0/en/controllers/components/authentication.html#making-actions-public
+     * @link https://book.cakephp.org/3/en/controllers/components/authentication.html#making-actions-public
      */
     public function allow($actions = null)
     {
@@ -649,7 +649,7 @@ class AuthComponent extends Component
      * @param string|string[]|null $actions Controller action name or array of actions
      * @return void
      * @see \Cake\Controller\Component\AuthComponent::allow()
-     * @link https://book.cakephp.org/3.0/en/controllers/components/authentication.html#making-actions-require-authorization
+     * @link https://book.cakephp.org/3/en/controllers/components/authentication.html#making-actions-require-authorization
      */
     public function deny($actions = null)
     {
@@ -675,7 +675,7 @@ class AuthComponent extends Component
      *
      * @param array|\ArrayAccess $user User data.
      * @return void
-     * @link https://book.cakephp.org/3.0/en/controllers/components/authentication.html#identifying-users-and-logging-them-in
+     * @link https://book.cakephp.org/3/en/controllers/components/authentication.html#identifying-users-and-logging-them-in
      */
     public function setUser($user)
     {
@@ -689,7 +689,7 @@ class AuthComponent extends Component
      * which the authenticate classes can listen for and perform custom logout logic.
      *
      * @return string Normalized config `logoutRedirect`
-     * @link https://book.cakephp.org/3.0/en/controllers/components/authentication.html#logging-users-out
+     * @link https://book.cakephp.org/3/en/controllers/components/authentication.html#logging-users-out
      */
     public function logout()
     {
@@ -709,7 +709,7 @@ class AuthComponent extends Component
      *
      * @param string|null $key Field to retrieve. Leave null to get entire User record.
      * @return mixed|null Either User record or null if no user is logged in, or retrieved field if key is specified.
-     * @link https://book.cakephp.org/3.0/en/controllers/components/authentication.html#accessing-the-logged-in-user
+     * @link https://book.cakephp.org/3/en/controllers/components/authentication.html#accessing-the-logged-in-user
      */
     public function user($key = null)
     {

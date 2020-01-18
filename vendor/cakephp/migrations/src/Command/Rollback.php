@@ -20,7 +20,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Rollback extends RollbackCommand
 {
-
     use CommandTrait;
     use ConfigurationTrait {
         execute as parentExecute;
@@ -63,9 +62,11 @@ class Rollback extends RollbackCommand
     {
         $event = $this->dispatchEvent('Migration.beforeRollback');
         if ($event->isStopped()) {
-            return $event->result;
+            return $event->result ? BaseCommand::CODE_SUCCESS : BaseCommand::CODE_ERROR;
         }
         $this->parentExecute($input, $output);
         $this->dispatchEvent('Migration.afterRollback');
+
+        return BaseCommand::CODE_SUCCESS;
     }
 }

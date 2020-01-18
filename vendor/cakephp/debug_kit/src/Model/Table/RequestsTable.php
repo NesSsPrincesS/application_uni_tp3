@@ -13,6 +13,7 @@
 namespace DebugKit\Model\Table;
 
 use Cake\Core\Configure;
+use Cake\Database\Driver\Sqlite;
 use Cake\ORM\Query;
 use Cake\ORM\Table;
 use DebugKit\Model\Entity\Request;
@@ -78,7 +79,8 @@ class RequestsTable extends Table
     /**
      * Garbage collect old request data.
      *
-     * Delete request data that is older than 2 weeks old.
+     * Delete request data that is older than latest 20 requests.
+     * You can use the `DebugKit.requestCount` config to change this limit.
      * This method will only trigger periodically.
      *
      * @return void
@@ -90,11 +92,8 @@ class RequestsTable extends Table
         }
         $noPurge = $this->find()
             ->select(['id'])
-            ->enableHydration(false)
             ->order(['requested_at' => 'desc'])
-            ->limit(Configure::read('DebugKit.requestCount') ?: 20)
-            ->extract('id')
-            ->toArray();
+            ->limit(Configure::read('DebugKit.requestCount') ?: 20);
 
         $query = $this->Panels->query()
             ->delete()
@@ -108,5 +107,10 @@ class RequestsTable extends Table
 
         $statement = $query->execute();
         $statement->closeCursor();
+
+        $conn = $this->getConnection();
+        if ($conn->getDriver() instanceof Sqlite) {
+            $conn->execute('VACUUM;');
+        }
     }
 }

@@ -23,7 +23,6 @@ use Cake\Database\Expression\FunctionExpression;
  */
 class FunctionsBuilder
 {
-
     /**
      * Returns a new instance of a FunctionExpression. This is used for generating
      * arbitrary function calls in the final SQL string.
@@ -182,7 +181,7 @@ class FunctionsBuilder
      */
     public function datePart($part, $expression, $types = [])
     {
-        return $this->extract($part, $expression);
+        return $this->extract($part, $expression, $types);
     }
 
     /**

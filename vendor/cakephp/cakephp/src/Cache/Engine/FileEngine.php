@@ -33,7 +33,6 @@ use SplFileObject;
  */
 class FileEngine extends CacheEngine
 {
-
     /**
      * Instance of SplFileObject class
      *
@@ -68,7 +67,7 @@ class FileEngine extends CacheEngine
         'path' => null,
         'prefix' => 'cake_',
         'probability' => 100,
-        'serialize' => true
+        'serialize' => true,
     ];
 
     /**
@@ -395,7 +394,8 @@ class FileEngine extends CacheEngine
         if (!$createKey && !$path->isFile()) {
             return false;
         }
-        if (empty($this->_File) ||
+        if (
+            empty($this->_File) ||
             $this->_File->getBasename() !== $key ||
             $this->_File->valid() === false
         ) {

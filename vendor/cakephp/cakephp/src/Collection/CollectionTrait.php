@@ -39,7 +39,6 @@ use Traversable;
  */
 trait CollectionTrait
 {
-
     use ExtractTrait;
 
     /**
@@ -570,7 +569,7 @@ trait CollectionTrait
         $options = [
             'keyPath' => $this->_propertyExtractor($keyPath),
             'valuePath' => $this->_propertyExtractor($valuePath),
-            'groupPath' => $groupPath ? $this->_propertyExtractor($groupPath) : null
+            'groupPath' => $groupPath ? $this->_propertyExtractor($groupPath) : null,
         ];
 
         $mapper = function ($value, $key, $mapReduce) use ($options) {
@@ -741,7 +740,7 @@ trait CollectionTrait
         $modes = [
             'desc' => TreeIterator::SELF_FIRST,
             'asc' => TreeIterator::CHILD_FIRST,
-            'leaves' => TreeIterator::LEAVES_ONLY
+            'leaves' => TreeIterator::LEAVES_ONLY,
         ];
 
         return new TreeIterator(

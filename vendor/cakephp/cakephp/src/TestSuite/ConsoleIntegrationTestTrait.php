@@ -26,6 +26,7 @@ use Cake\TestSuite\Constraint\Console\ContentsRegExp;
 use Cake\TestSuite\Constraint\Console\ExitCode;
 use Cake\TestSuite\Stub\ConsoleInput;
 use Cake\TestSuite\Stub\ConsoleOutput;
+use Cake\TestSuite\Stub\MissingConsoleInputException;
 
 /**
  * A test case class intended to make integration tests of cake console commands
@@ -88,6 +89,12 @@ trait ConsoleIntegrationTestTrait
 
         try {
             $this->_exitCode = $runner->run($args, $io);
+        } catch (MissingConsoleInputException $e) {
+            $messages = $this->_out->messages();
+            if (count($messages)) {
+                $e->setQuestion($messages[count($messages) - 1]);
+            }
+            throw $e;
         } catch (StopException $exception) {
             $this->_exitCode = $exception->getCode();
         }
@@ -175,6 +182,7 @@ trait ConsoleIntegrationTestTrait
     {
         $this->assertThat($expected, new ContentsContain($this->_out->messages(), 'output'), $message);
     }
+
     /**
      * Asserts `stdout` does not contain expected output
      *

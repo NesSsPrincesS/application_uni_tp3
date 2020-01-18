@@ -26,7 +26,6 @@ use RuntimeException;
  */
 class TableLocator implements LocatorInterface
 {
-
     /**
      * Contains a list of locations where table classes should be looked for.
      *
@@ -235,7 +234,7 @@ class TableLocator implements LocatorInterface
             if (!empty($options['connectionName'])) {
                 $connectionName = $options['connectionName'];
             } else {
-                /* @var \Cake\ORM\Table $className */
+                /** @var \Cake\ORM\Table $className */
                 $className = $options['className'];
                 $connectionName = $className::defaultConnectionName();
             }

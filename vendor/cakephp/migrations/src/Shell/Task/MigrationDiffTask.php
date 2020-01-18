@@ -115,7 +115,7 @@ class MigrationDiffTask extends SimpleMigrationTask
         $collection = $this->getCollection($this->connection);
         EventManager::instance()->on('Bake.initialize', function (Event $event) use ($collection) {
             $event->getSubject()->loadHelper('Migrations.Migration', [
-                'collection' => $collection
+                'collection' => $collection,
             ]);
         });
 
@@ -210,7 +210,7 @@ class MigrationDiffTask extends SimpleMigrationTask
     {
         $this->templateData['fullTables'] = [
             'add' => array_diff_key($this->currentSchema, $this->dumpSchema),
-            'remove' => array_diff_key($this->dumpSchema, $this->currentSchema)
+            'remove' => array_diff_key($this->dumpSchema, $this->currentSchema),
         ];
     }
 
@@ -252,7 +252,8 @@ class MigrationDiffTask extends SimpleMigrationTask
                 unset($column['collate']);
                 unset($oldColumn['collate']);
 
-                if (in_array($columnName, $oldColumns) &&
+                if (
+                    in_array($columnName, $oldColumns) &&
                     $column !== $oldColumn
                 ) {
                     $changedAttributes = array_diff_assoc($column, $oldColumn);
@@ -340,7 +341,8 @@ class MigrationDiffTask extends SimpleMigrationTask
             foreach ($currentConstraints as $constraintName) {
                 $constraint = $currentSchema->getConstraint($constraintName);
 
-                if (in_array($constraintName, $oldConstraints) &&
+                if (
+                    in_array($constraintName, $oldConstraints) &&
                     $constraint !== $this->dumpSchema[$table]->getConstraint($constraintName)
                 ) {
                     $this->templateData[$table]['constraints']['remove'][$constraintName] =
@@ -391,7 +393,8 @@ class MigrationDiffTask extends SimpleMigrationTask
             foreach ($currentIndexes as $indexName) {
                 $index = $currentSchema->getIndex($indexName);
 
-                if (in_array($indexName, $oldIndexes) &&
+                if (
+                    in_array($indexName, $oldIndexes) &&
                     $index !== $this->dumpSchema[$table]->getIndex($indexName)
                 ) {
                     $this->templateData[$table]['indexes']['remove'][$indexName] =
@@ -461,7 +464,7 @@ class MigrationDiffTask extends SimpleMigrationTask
         }
 
         $dispatch = $this->dispatchShell([
-            'command' => $dispatchCommand
+            'command' => $dispatchCommand,
         ]);
 
         if ($dispatch === 1) {
@@ -550,7 +553,7 @@ class MigrationDiffTask extends SimpleMigrationTask
 
         $parser->addArgument('name', [
             'help' => 'Name of the migration to bake. Can use Plugin.name to bake migration files into plugins.',
-            'required' => true
+            'required' => true,
         ]);
 
         return $parser;

@@ -25,7 +25,6 @@ use Cake\View\Helper;
  */
 class UrlHelper extends Helper
 {
-
     /**
      * Returns a URL based on provided parameters.
      *
@@ -178,7 +177,8 @@ class UrlHelper extends Helper
         if (!empty($options['pathPrefix']) && $path[0] !== '/') {
             $path = $options['pathPrefix'] . $path;
         }
-        if (!empty($options['ext']) &&
+        if (
+            !empty($options['ext']) &&
             strpos($path, '?') === false &&
             substr($path, -strlen($options['ext'])) !== $options['ext']
         ) {
