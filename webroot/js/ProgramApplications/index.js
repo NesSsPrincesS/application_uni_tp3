@@ -23,23 +23,20 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
             });
         ProgramApplicationsCRUDService.getUniversities()
             .then(function success(response) {
-                    console.log(response);
-                    $scope.universities = response.data;
-                },
-                function error(response) {
-                    console.log('error');
-                });
+                $scope.universities = response.data;
+            });
     }
 
     $scope.displayAddForm = function () {
         $('.prog-app-index').hide();
+        $('.prog-app-edit').hide();
         $('.prog-app-add').show();
     }
 
     //create a new application like with New Program Application
     $scope.addApplication = function () {
-        if ($scope.application != null && $scope.application.university_id && $scope.application.program_id) {
-            ProgramApplicationsCRUDService.addApplication($scope.application.id, $scope.application.university_id, $scope.application.program_id)
+        if ($scope.university && $scope.program) {
+            ProgramApplicationsCRUDService.addApplication($scope.university, $scope.program, new Date())
                 .then(function success(response) {
                         $scope.message = 'Application added!';
                         $scope.errorMessage = '';
@@ -48,9 +45,6 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
                         $scope.errorMessage = 'Error adding application!';
                         $scope.message = '';
                     });
-        } else {
-            $scope.errorMessage = 'Please enter a name!';
-            $scope.message = '';
         }
     }
 
@@ -119,7 +113,7 @@ app.controller('ProgramApplicationsCRUDCtrl', ['$scope', 'ProgramApplicationsCRU
 
     //delete application from actions menu - 'delete'
     $scope.deleteApplication = function (id) {
-        if (confirm('Are you sure you want to delete this location?')) {
+        if (confirm('Are you sure you want to delete this application?')) {
             ProgramApplicationsCRUDService.deleteApplication(id)
                 .then(function success(response) {
                         $scope.getAllApplications();
@@ -170,12 +164,12 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
         });
     }
 
-    this.addApplication = function addApplication(university_id, program_id) {
+    this.addApplication = function addApplication(university, program, date) {
         return $http({
             method: 'POST',
             url: urlToRestApi,
             //TODO: add user_id and created
-            data: {university_id: university_id, program_id: program_id},
+            data: {university_id: university.id, program_id: program.id},
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Accept': 'application/json'
@@ -217,8 +211,6 @@ app.service('ProgramApplicationsCRUDService', ['$http', function ($http) {
     }
 
     this.updateApplication = function updateApplication(application, application_outcome, application_status) {
-        console.log(application.id + ' ' + application_outcome + ' ' + application_status);
-
         let $outcome_id = ((application_outcome === undefined) ? application.application_outcome_id : application_outcome.id);
         let $status_id = ((application_status === undefined) ? application.application_status_id : application_status.id);
 

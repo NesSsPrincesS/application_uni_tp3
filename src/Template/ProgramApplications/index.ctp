@@ -170,7 +170,7 @@
             <fieldset>
                 <legend><?= __('Add Program Application') ?></legend>
                 <?php
-                    echo $this->Form->control('university_id', ['ng-model' => 'university_id',
+                    echo $this->Form->control('university_id', ['ng-model' => 'university',
                         'ng-options' => 'university.name for university in universities track by university.id']);
                 ?>
                 <div>
@@ -195,7 +195,7 @@
                     </select>
                 </div>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'), ['ng-click' => 'addApplication()']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
